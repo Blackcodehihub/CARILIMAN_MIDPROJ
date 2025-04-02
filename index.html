@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="starsCanvas"></canvas>
+    <nav>
+        <div class="logo-container">
+            <img src="lgoalkem.png" alt="Alkem's Cosmic Hub Logo" class="logo">
+            <h1>Alkem's Cosmic Hub</h1>
+        </div>
+        <span class="hamburger" onclick="toggleNav()">☰</span>
+        <div class="nav-buttons">
+            <button onclick="showSection('homepage')">Home</button>
+            <button onclick="showSection('portfolio')">Portfolio</button>
+            <button onclick="showSection('favorites')">Favorites</button>
+            <button onclick="self.close()">Close</button>
+        </div>
+    </nav>
+
+    <!-- Homepage Section -->
+    <section id="homepage">
+        <div class="hero-section">
+            <div class="hero-content">
+                <p id="subheading-text" class="subheading type-text" data-text="FUTURE TECH EXPLORER"></p>
+                <h1 id="heading-text" class="type-text" data-text="Unveil Alkem's Stellar Innovations"><span>Stellar Innovations</span></h1>
+                <p id="tagline-text" class="tagline type-text" data-text="Greetings, I'm Alkem Boi B. Cariliman! Let's dive into a universe of technology and imagination, coding our way through the stars."></p>
+                <button class="explore-btn" onclick="scrollToSection('portfolio')">Explore Now</button>
+            </div>
+            <div class="hero-carousel">
+                <img src="pc1.jpg" alt="Profile 1" class="carousel-image">
+                <img src="pc2.jpg" alt="Profile 2" class="carousel-image">
+                <img src="pc3.jpg" alt="Profile 3" class="carousel-image">
+            </div>
+            <div class="bottom-text">
+                <h2 id="bottom-heading-text" class="type-text" data-text="Igniting Imagination Through Code."></h2>
+                <p id="bottom-text-content" class="type-text" data-text="Join me on an interstellar adventure with Alkem's Cosmic Hub, where creativity knows no bounds. Discover my portfolio of stellar projects and take on the Brain Master Challenge to sharpen your mind."></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="hidden">
+        <h2>Portfolio - Brain Master Challenge</h2>
+        <p class="intro-text">Welcome to my cosmic collection of coding challenges! Dive into the Brain Master Challenge, where I’ve crafted a series of interactive functions to test your skills and spark your curiosity. Select a challenge below and embark on a stellar journey through code!</p>
+        <div class="portfolio-content">
+            <h3>Function Integration</h3>
+            <p class="description">Test your skills with these cosmic challenges! Choose a function below to get started on your journey through the stars.</p>
+            <p>Pick your challenge:</p>
+            <select id="functionSelect" onchange="executeFunction()">
+                <option value="">-- Select a Function --</option>
+                <option value="temperatureConverter">1. Temperature Converter (5 pts)</option>
+                <option value="longerWord">2. The Longer Word (5 pts)</option>
+                <option value="birthstone">3. Know My Birthstone (7 pts)</option>
+                <option value="basicOperators">4. Basic Operators (7 pts)</option>
+                <option value="computeAcceleration">5. Compute for Acceleration (8 pts)</option>
+            </select>
+
+            <div id="temperatureConverter" class="function-box hidden">
+                <h4>Temperature Converter</h4>
+                <div class="input-group">
+                    <input type="number" id="tempInput" placeholder="Enter temperature">
+                    <select id="tempUnit">
+                        <option value="">Select unit</option>
+                        <option value="1">Celsius to Fahrenheit</option>
+                        <option value="2">Fahrenheit to Celsius</option>
+                    </select>
+                    <button onclick="handleTemperatureConvert()">Convert</button>
+                </div>
+                <p id="tempResult" class="result"></p>
+            </div>
+
+            <div id="longerWord" class="function-box hidden">
+                <h4>The Longer Word</h4>
+                <div class="input-group">
+                    <input type="text" id="word1" placeholder="Enter first word">
+                    <input type="text" id="word2" placeholder="Enter second word">
+                    <button onclick="handleLongerWord()">Compare</button>
+                </div>
+                <p id="wordResult" class="result"></p>
+            </div>
+
+            <div id="birthstone" class="function-box hidden">
+                <h4>Know My Birthstone</h4>
+                <div class="input-group">
+                    <input type="text" id="birthMonth" placeholder="Enter birth month (e.g., January)">
+                    <button onclick="handleBirthstone()">Find Birthstone</button>
+                </div>
+                <p id="birthstoneResult" class="result"></p>
+            </div>
+
+            <div id="basicOperators" class="function-box hidden">
+                <h4>Basic Operators</h4>
+                <div class="input-group">
+                    <input type="number" id="num1" placeholder="Enter first number">
+                    <input type="number" id="num2" placeholder="Enter second number">
+                    <select id="operator">
+                        <option value="">Select operation</option>
+                        <option value="1">Add (+)</option>
+                        <option value="2">Subtract (-)</option>
+                        <option value="3">Multiply (×)</option>
+                        <option value="4">Divide (÷)</option>
+                    </select>
+                    <button onclick="handleCalculate()">Calculate</button>
+                </div>
+                <p id="calcResult" class="result"></p>
+            </div>
+
+            <div id="computeAcceleration" class="function-box hidden">
+                <h4>Compute for Acceleration</h4>
+                <div class="input-group">
+                    <input type="number" id="force" placeholder="Enter force (Newtons)">
+                    <input type="number" id="mass" placeholder="Enter mass (kg)">
+                    <button onclick="handleComputeAcceleration()">Compute</button>
+                </div>
+                <p id="accelResult" class="result"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorites Section -->
+    <section id="favorites" class="hidden">
+        <h2>Favorites Gallery</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="side1.png" alt="Favorite 1">
+                <div class="interaction">
+                    <span class="heart" onclick="toggleHeart(this)">♡</span>
+                    <div class="comment-section">
+                        <textarea class="comment-box" placeholder="Add a comment..." onkeydown="submitOnEnter(event, this)"></textarea>
+                        <button class="submit-btn" onclick="submitComment(this)">Submit</button>
+                        <ul class="comments-list"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="master.png" alt="Favorite 2">
+                <div class="interaction">
+                    <span class="heart" onclick="toggleHeart(this)">♡</span>
+                    <div class="comment-section">
+                        <textarea class="comment-box" placeholder="Add a comment..." onkeydown="submitOnEnter(event, this)"></textarea>
+                        <button class="submit-btn" onclick="submitComment(this)">Submit</button>
+                        <ul class="comments-list"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="side2.png" alt="Favorite 3">
+                <div class="interaction">
+                    <span class="heart" onclick="toggleHeart(this)">♡</span>
+                    <div class="comment-section">
+                        <textarea class="comment-box" placeholder="Add a comment..." onkeydown="submitOnEnter(event, this)"></textarea>
+                        <button class="submit-btn" onclick="submitComment(this)">Submit</button>
+                        <ul class="comments-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2025 Alkem's Cosmic Hub. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.youtube.com" class="social-icon" title="YouTube" target="_blank">YT</a>
+                <a href="https://www.facebook.com" class="social-icon" title="Facebook" target="_blank">FB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
